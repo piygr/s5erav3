@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.optim as optim
 from torchvision import datasets, transforms
 from torch.utils.data import DataLoader
-from mnist_model.model import MNISTModel
+from models.model import MNISTModel
 
 def get_model_size(model):
     param_size = 0
