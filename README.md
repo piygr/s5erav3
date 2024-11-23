@@ -94,20 +94,19 @@ pip install -r requirements.txt
 ## Model Overview
 
 The model is a compact CNN with the following architecture:
-- **Conv2D Layer 1**: 16 filters, 3x3 kernel, followed by Batch Normalization and ReLU activation.
-- **MaxPooling Layer**: 2x2 pooling.
-- **Conv2D Layer 2**: 32 filters, 3x3 kernel, followed by Batch Normalization and ReLU activation.
-- **MaxPooling Layer**: 2x2 pooling.
-- **Fully Connected Layer 1**: 64 units, ReLU activation, followed by Dropout.
-- **Fully Connected Layer 2**: 10 units (output).
+- **Conv2D Layer 1**: 16 filters, 3x3 kernel with padding, followed by ReLU activation, Batch Normalization, and Dropout (0.05).
+- **Conv2D Layer 2**: 32 filters, 3x3 kernel with padding, followed by ReLU activation, Batch Normalization, and Dropout (0.05).
+- **Transition Layer**: MaxPooling (2x2) followed by a Conv2D layer with 8 filters and 1x1 kernel to reduce dimensions.
+- **Conv2D Layer 3**: 16 filters, 3x3 kernel, followed by ReLU activation, Batch Normalization, and Dropout (0.05).
+- **Conv2D Layer 4**: 32 filters, 3x3 kernel, followed by ReLU activation, Batch Normalization, and Dropout (0.05).
+- **Transition Layer**: MaxPooling (2x2) followed by a Conv2D layer with 8 filters and 1x1 kernel to reduce dimensions.
+- **Conv2D Layer 5**: 16 filters, 3x3 kernel with padding, followed by ReLU activation, Batch Normalization, and Dropout (0.05).
+- **Global Average Pooling (GAP)**: 3x3 average pooling to reduce the feature map to a smaller size.
+- **Fully Connected Layer**: Linear layer with 16 inputs and 10 outputs (classes).
+- **Output**: Log-Softmax activation for classification.
+
 
 ## License
 
 This project is licensed under the MIT License.
-
-## Author
-
-- **Your Name** - [GitHub Profile](https://github.com/yourusername)
-
-Feel free to contact me if you have any questions or suggestions!
 
