@@ -5,9 +5,9 @@ This repository contains a PyTorch implementation of a Convolutional Neural Netw
 ## Project Structure
 
 ```
-mnist_pytorch/
+s5erav3/
 │
-├── mnist_model/
+├── models/
 │   ├── __init__.py
 │   ├── model.py              # Model definition with CNN, BatchNorm, and Dropout
 │
