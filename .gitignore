@@ -55,8 +55,6 @@ data/
 # Model files
 mnist_model.pth
 
-# GitHub Actions
-.github/workflows/test_model.yml
 
 # Python virtual environment
 *.env
