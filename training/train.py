@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.optim as optim
 from torchvision import datasets, transforms
 from torch.utils.data import DataLoader
-from models.model import MNISTModel
+from mnist_model.model import MNISTModel
 
 def get_model_size(model):
     param_size = 0
@@ -22,7 +22,9 @@ def train_and_evaluate():
         transforms.Normalize((0.5,), (0.5,))
     ])
     train_dataset = datasets.MNIST(root='./data', train=True, transform=transform, download=True)
+    val_dataset = datasets.MNIST(root='./data', train=False, transform=transform, download=True)
     train_loader = DataLoader(train_dataset, batch_size=128, shuffle=True)
+    val_loader = DataLoader(val_dataset, batch_size=128, shuffle=False)
 
     # Model, loss, and optimizer
     model = MNISTModel()
@@ -52,6 +54,19 @@ def train_and_evaluate():
 
     print(f"Training Accuracy: {train_accuracy * 100:.2f}%")
     print(f"Total Parameters: {total_params}")
+
+    # Validation loop
+    model.eval()
+    val_correct = 0
+    with torch.no_grad():
+        for images, labels in val_loader:
+            outputs = model(images)
+            _, preds = torch.max(outputs, 1)
+            val_correct += (preds == labels).sum().item()
+
+    # Validation accuracy
+    val_accuracy = val_correct / len(val_loader.dataset)
+    print(f"Validation Accuracy: {val_accuracy * 100:.2f}%")
 
     # Save the model for GitHub Actions testing
     torch.save(model.state_dict(), "mnist_model.pth")
