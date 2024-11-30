@@ -5,7 +5,7 @@ This repository contains a PyTorch implementation of a Convolutional Neural Netw
 ## Project Structure
 
 ```
-s6erav3/
+s5erav3/
 │
 ├── models/
 │   ├── __init__.py
@@ -40,7 +40,7 @@ s6erav3/
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/piygr/s6erav3.git
+   git clone https://github.com/yourusername/mnist_pytorch.git
    cd mnist_pytorch
    ```
 
